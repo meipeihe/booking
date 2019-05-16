@@ -1,5 +1,6 @@
 
 # from app.libs.error_code import NotFound
+from app.lib.error_code import NotFound
 
 __author__ = 'wuxian'
 
@@ -33,14 +34,14 @@ class Query(BaseQuery):
     def get_or_404(self, ident):
         rv = self.get(ident)
         if not rv:
-            # raise NotFound()
+            raise NotFound()
             pass
         return rv
 
     def first_or_404(self):
         rv = self.first()
         if not rv:
-            # raise NotFound()
+            raise NotFound()
             pass
         return rv
 
