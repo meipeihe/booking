@@ -15,7 +15,8 @@ class User(Base):
     auth = Column(SmallInteger, default=1)
 
     def keys(self):
-        return ('email', 'nick_name')
+        return ('email', 'nick_name', 'id', 'auth')
+
 
     @property
     def password(self):
@@ -42,7 +43,8 @@ class User(Base):
         if not user.check_password(password):
             raise AuthFail()
         return {
-            'uid': user.id
+            'uid': user.id,
+            'scope': user.auth
         }
 
     def check_password(self, password):

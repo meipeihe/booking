@@ -20,7 +20,7 @@ def get_token():
     }
     user = promise[form.type.data](form.account.data,form.secure.data)
 
-    token = generate_auth_token(user['uid'], form.type.data, None, current_app.config['EXPIRATION'])
+    token = generate_auth_token(user['uid'], form.type.data, user['scope'], current_app.config['EXPIRATION'])
 
     t = {
         'token': token.decode('ascii')
